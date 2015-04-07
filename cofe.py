@@ -15,7 +15,7 @@ import jaraco.logging
 WAIT_BEFORE_QUIT = 3600
 WAIT_BEFORE_JOIN = 86400
 WAIT_BEFORE_POST = 18000
-NB_MSG_BEFORE_QUIT = 10
+NB_MSG_BEFORE_QUIT = 7
 
 nicknames = ["Oxdeca", "_0xdeca", "Oxcafe", "oxdeca", "oxcafe"]
 
