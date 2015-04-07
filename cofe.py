@@ -12,14 +12,12 @@ import irc
 import irc.client, irc.bot
 import jaraco.logging
 
-WAIT_BEFORE_QUIT = 800
-WAIT_BEFORE_JOIN = 800
+WAIT_BEFORE_QUIT = 18000
+WAIT_BEFORE_JOIN = 18000
 WAIT_BEFORE_POST = 3600
 NB_MSG_BEFORE_QUIT = 10
 
-
 nicknames = ["Oxdeca", "_0xdeca", "Oxcafe", "oxdeca", "oxcafe"]
-s = sched.scheduler(time.time, time.sleep)
 
 class Bot(irc.bot.SingleServerIRCBot):
 
@@ -58,11 +56,9 @@ class Bot(irc.bot.SingleServerIRCBot):
         c.quit("What else ?")
 
     def main_loop(self, connection):
-        global s
         ttl = randint(1, NB_MSG_BEFORE_QUIT)
         next_msg = 0
         for i in xrange(ttl):
-            # Randomize a number
             next_msg += randint(1, WAIT_BEFORE_POST)
             Timer(next_msg, self.spam, args=[connection]).start()
         Timer(next_msg + WAIT_BEFORE_QUIT, self.quit, args=[connection]).start()
@@ -78,7 +74,6 @@ def main():
     server = "securimag.org"
     port = 6697
     target = "#securimag"
-    bots = list()
     while True:
         if len(nicknames) > 0:
             bot = Bot(nicknames.pop(), server, port, target)
