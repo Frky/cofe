@@ -13,7 +13,7 @@ import irc.client, irc.bot
 import jaraco.logging
 
 WAIT_BEFORE_QUIT = 3600
-WAIT_BEFORE_JOIN = 86400
+WAIT_BEFORE_JOIN = 3*86400
 WAIT_BEFORE_POST = 18000
 NB_MSG_BEFORE_QUIT = 7
 
